@@ -370,7 +370,7 @@ Mods: {
 		Buffs: {
 			DemonFormBuff: {
 				DisplayName: Demon Form
-				Description: Muzan's blood burns in your veins. Stronger, faster, regenerating. Ends at dawn
+				Description: Muzan's blood burns in your veins. Monstrous strength, speed and regeneration. Ends at dawn
 			}
 			WisteriaPoisonBuff: {
 				DisplayName: Wisteria Poison

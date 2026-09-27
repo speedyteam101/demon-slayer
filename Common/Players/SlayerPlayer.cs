@@ -281,11 +281,24 @@ namespace DemonSlayerMod.Common.Players
 		}
 
 		public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone) {
+			DemonFeed(target, damageDone);
 			CheckKill(target);
 		}
 
 		public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone) {
+			DemonFeed(target, damageDone);
 			CheckKill(target);
+		}
+
+		// Demon form: every hit feeds you 5% of the damage dealt (up to 15 HP, at most 6 times a second).
+		private int feedTimer;
+		private void DemonFeed(NPC target, int damageDone) {
+			if (!InDemonForm || target.immortal || feedTimer > 0 || Player.whoAmI != Main.myPlayer) {
+				return;
+			}
+			int heal = System.Math.Clamp(damageDone / 20, 1, 15);
+			Player.Heal(heal);
+			feedTimer = 10;
 		}
 
 		// Called for every hit from the blade or a technique: colour debuff and life steal.
@@ -336,6 +349,9 @@ namespace DemonSlayerMod.Common.Players
 		public override void PostUpdate() {
 			if (lifeStealTimer > 0) {
 				lifeStealTimer--;
+			}
+			if (feedTimer > 0) {
+				feedTimer--;
 			}
 			if (Player.whoAmI != Main.myPlayer) {
 				return;
@@ -412,7 +428,7 @@ namespace DemonSlayerMod.Common.Players
 
 		// In demon form, without a Nichirin Blade in hand, the technique key fires a Blood Demon Art.
 		private void BloodDemonArt() {
-			const int cost = 15;
+			const int cost = 10;
 			if (TechniqueCooldown > 0) {
 				return;
 			}
@@ -422,11 +438,11 @@ namespace DemonSlayerMod.Common.Players
 			}
 			Breath -= cost;
 			BreathDelay = 30;
-			TechniqueCooldown = TechniqueCooldownMax = 20;
-			int damage = (int)(Player.GetTotalDamage(DamageClass.Melee).ApplyTo(20 + Level * 2));
+			TechniqueCooldown = TechniqueCooldownMax = 12;
+			int damage = (int)(Player.GetTotalDamage(DamageClass.Melee).ApplyTo(40 + Level * 5));
 			Vector2 aim = (Main.MouseWorld - Player.Center).SafeNormalize(Vector2.UnitX * Player.direction);
-			for (int i = -1; i <= 1; i++) {
-				Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, aim.RotatedBy(i * 0.15f) * 16f,
+			for (int i = -2; i <= 2; i++) {
+				Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, aim.RotatedBy(i * 0.12f) * 18f,
 					ModContent.ProjectileType<Content.Projectiles.BloodArtShot>(), damage, 4f, Player.whoAmI);
 			}
 			SoundEngine.PlaySound(SoundID.Item17, Player.Center);

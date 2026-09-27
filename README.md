@@ -105,11 +105,11 @@ Life values are for Classic mode (Expert and Master scale them up as usual). All
 
 ## Becoming a demon
 
-Very rarely, a **Mysterious Gentleman** appears on the surface at night. He is Muzan Kibutsuji in disguise: he can't be hurt, and he vanishes at dawn. Talk to him and choose **Accept his blood** to become a demon (permanent for that character).
+A **Mysterious Gentleman** often appears on the surface at night. He is Muzan Kibutsuji in disguise: he can't be hurt, and he vanishes at dawn. Talk to him and choose **Accept his blood** to become a demon (permanent for that character).
 
 - Press **Z** (Toggle Demon Form) **at night** to transform, and again to turn back. You can't transform during the day, and at dawn you're turned back automatically.
-- Demon form: +20% damage (+2% per Slayer rank), +15% melee speed, +25% movement speed, +10 defense (+1 per rank), fast life regeneration (+6 HP/s, more with rank), much higher jumps, no fall damage, night vision, immunity to Poisoned and Bleeding.
-- With no Nichirin Blade in hand, the technique key (F) fires a **Blood Demon Art**: three lashes of blood that make enemies bleed and sometimes heal you (15 Breath).
+- Demon form (it's meant to be overpowered): +60% damage (+4% per Slayer rank), +15% crit, +20 armor penetration, +40% melee speed, +50% movement speed, +30 defense (+3 per rank), 20% damage reduction, +100 max life (+10 per rank), very fast regeneration (+15 HP/s, more with rank), huge jumps, no fall damage or knockback, night vision, and immunity to most debuffs (poison, venom, bleeding, fire, frost, slow, confusion, weakness, darkness, webs, ichor). Every hit heals you for 5% of the damage dealt.
+- With no Nichirin Blade in hand, the technique key (F) fires a **Blood Demon Art**: five lashes of blood that pierce 8 enemies and walls, make enemies bleed, and sometimes heal you (10 Breath).
 - You can still use your Nichirin Blade and breathing techniques in demon form.
 
 ## Gear

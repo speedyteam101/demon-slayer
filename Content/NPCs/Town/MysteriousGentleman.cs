@@ -38,7 +38,8 @@ namespace DemonSlayerMod.Content.NPCs.Town
 			if (NPC.AnyNPCs(Type) || spawnInfo.PlayerInTown) {
 				return 0f;
 			}
-			return SpawnCondition.OverworldNightMonster.Chance * 0.015f;
+			// Very common: at night on the surface he turns up in about half of the spawn rolls until he is there.
+			return SpawnCondition.OverworldNightMonster.Chance * 0.5f;
 		}
 
 		public override bool CheckActive() => Main.dayTime; // stays until dawn, even off-screen

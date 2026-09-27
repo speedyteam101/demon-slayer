@@ -18,9 +18,9 @@ namespace DemonSlayerMod.Content.Projectiles
 			Projectile.height = 18;
 			Projectile.friendly = true;
 			Projectile.DamageType = DamageClass.Melee;
-			Projectile.penetrate = 4;
-			Projectile.timeLeft = 40;
-			Projectile.tileCollide = true;
+			Projectile.penetrate = 8;
+			Projectile.timeLeft = 50;
+			Projectile.tileCollide = false;
 			Projectile.usesLocalNPCImmunity = true;
 			Projectile.localNPCHitCooldown = -1;
 			Projectile.aiStyle = -1;

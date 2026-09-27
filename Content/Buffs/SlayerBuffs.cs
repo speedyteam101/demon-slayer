@@ -85,16 +85,24 @@ namespace DemonSlayerMod.Content.Buffs
 			player.buffTime[buffIndex] = 2;
 
 			int rank = Common.Players.SlayerPlayer.Get(player).Rank;
-			player.GetDamage(DamageClass.Generic) += 0.2f + rank * 0.02f;
-			player.GetAttackSpeed(DamageClass.Melee) += 0.15f;
-			player.moveSpeed += 0.25f;
-			player.statDefense += 10 + rank;
-			player.lifeRegen += 12 + rank;
-			player.jumpSpeedBoost += 2.5f;
+			player.GetDamage(DamageClass.Generic) += 0.6f + rank * 0.04f;
+			player.GetCritChance(DamageClass.Generic) += 15f;
+			player.GetAttackSpeed(DamageClass.Melee) += 0.4f;
+			player.GetArmorPenetration(DamageClass.Generic) += 20;
+			player.moveSpeed += 0.5f;
+			player.maxRunSpeed += 3f;
+			player.statDefense += 30 + rank * 3;
+			player.endurance += 0.2f;
+			player.statLifeMax2 += 100 + rank * 10;
+			player.lifeRegen += 30 + rank * 2;
+			player.jumpSpeedBoost += 5f;
 			player.noFallDmg = true;
+			player.noKnockback = true;
 			player.nightVision = true;
-			player.buffImmune[BuffID.Poisoned] = true;
-			player.buffImmune[BuffID.Bleeding] = true;
+			foreach (int debuff in new[] { BuffID.Poisoned, BuffID.Venom, BuffID.Bleeding, BuffID.OnFire, BuffID.Frostburn,
+				BuffID.Chilled, BuffID.Slow, BuffID.Confused, BuffID.Weak, BuffID.Darkness, BuffID.Webbed, BuffID.Ichor }) {
+				player.buffImmune[debuff] = true;
+			}
 
 			if (Main.rand.NextBool(4)) {
 				Dust dust = Dust.NewDustDirect(player.position, player.width, player.height, DustID.Blood, 0f, -1f, 0, default, 1.1f);
