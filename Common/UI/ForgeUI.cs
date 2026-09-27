@@ -92,7 +92,7 @@ namespace DemonSlayerMod.Common.UI
 		}
 
 		private static void Changed(NichirinBlade blade, int slot) {
-			blade.Item.rare = SwordParts.Steels[blade.Build.Steel].Rarity;
+			blade.UpdateInventory(Main.LocalPlayer); // refreshes rarity
 			if (Main.netMode == NetmodeID.MultiplayerClient && slot >= 0) {
 				NetMessage.SendData(MessageID.SyncEquipment, -1, -1, null, Main.myPlayer, PlayerItemSlotID.Inventory0 + slot, blade.Item.prefix);
 			}

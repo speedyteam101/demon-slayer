@@ -1,6 +1,15 @@
 Mods: {
 	DemonSlayerMod: {
 		Items: {
+			Yoto: {
+				DisplayName: Yōtō
+				Tooltip:
+					'''
+					A katana forged from a demon's own flesh and blood
+					Works like a Nichirin Blade: customise it at a Swordsmith's Forge and use breathing techniques with it
+					'''
+			}
+
 			WoodenCharm: {
 				DisplayName: Wooden Charm
 				Tooltip:

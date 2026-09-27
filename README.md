@@ -101,6 +101,8 @@ Demons come out at night. They **burn in sunlight**, **regenerate** when left al
 | Kokushibo (Upper Moon 1) | Broken Flute | 35 Demon Blood, 3 of each Lunar Fragment @ Ancient Manipulator | After Lunatic Cultist | 118,000 |
 | Muzan Kibutsuji | Blue Spider Lily | 50 Demon Blood, 10 Luminite Bar @ Ancient Manipulator | After Moon Lord | 260,000 |
 
+**Yōtō:** every demon boss has a 1 in 25 chance (Muzan: 1 in 8) to drop a **Yōtō**, a demon-forged katana with **2000 base damage**. It is customised at the Swordsmith's Forge exactly like a Nichirin Blade (the blade shape still multiplies its damage; the steel choice doesn't matter), breathing techniques scale from it, and demons take full damage from it.
+
 Life values are for Classic mode (Expert and Master scale them up as usual). All 14 bosses mix 12 attack patterns (aimed fans, rings, spirals, charges, minions, rain, ground spikes, teleports, fast barrages, warning-circle bombs, splitting crescent moons and sweeping walls). Every boss speeds up below half health, and the Upper Moons and Muzan enrage again below a quarter.
 
 ## Becoming a demon

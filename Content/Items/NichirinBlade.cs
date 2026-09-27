@@ -24,6 +24,10 @@ namespace DemonSlayerMod.Content.Items
 
 		public SwordBuild Build = new();
 
+		// A blade whose base damage ignores the steel (the Yōtō). null for a normal Nichirin Blade.
+		public virtual int? FixedBaseDamage => null;
+		protected virtual int FixedRarity => -1;
+
 		public override void SetStaticDefaults() {
 			Item.ResearchUnlockCount = 1;
 		}
@@ -50,8 +54,8 @@ namespace DemonSlayerMod.Content.Items
 		}
 
 		public override void ModifyWeaponDamage(Player player, ref StatModifier damage) {
-			Steel steel = SwordParts.Steels[EffectiveSteel(player)];
-			damage *= steel.Damage * SwordParts.Shapes[Build.Shape].DamageMult / ReferenceDamage;
+			int baseDamage = FixedBaseDamage ?? SwordParts.Steels[EffectiveSteel(player)].Damage;
+			damage *= baseDamage * SwordParts.Shapes[Build.Shape].DamageMult / ReferenceDamage;
 		}
 
 		public override void ModifyWeaponCrit(Player player, ref float crit) {
@@ -71,7 +75,7 @@ namespace DemonSlayerMod.Content.Items
 		}
 
 		public override void UpdateInventory(Player player) {
-			Item.rare = SwordParts.Steels[Build.Steel].Rarity;
+			Item.rare = FixedRarity >= 0 ? FixedRarity : SwordParts.Steels[Build.Steel].Rarity;
 		}
 
 		public override void MeleeEffects(Player player, Rectangle hitbox) {
@@ -109,7 +113,11 @@ namespace DemonSlayerMod.Content.Items
 			if (Build.Engraving != 0) {
 				lines.Add($"Engraved \"{SwordParts.Engravings[Build.Engraving].Name}\": {SwordParts.Engravings[Build.Engraving].Description}");
 			}
-			if (effective != Build.Steel) {
+			if (FixedBaseDamage != null) {
+				lines[0] = $"{SwordParts.Shapes[Build.Shape].Name} — {SwordParts.Colours[Build.Colour].Name} blade";
+				lines.Add($"[c/FF4060:A demon-forged blade: {FixedBaseDamage} base damage whatever its steel]");
+			}
+			else if (effective != Build.Steel) {
 				lines.Add($"[c/FF6060:You haven't earned {SwordParts.Steels[Build.Steel].Name} yet; it cuts like {SwordParts.Steels[effective].Name}]");
 			}
 			lines.Add("Customise it at a Swordsmith's Forge");

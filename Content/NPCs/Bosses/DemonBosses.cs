@@ -253,6 +253,7 @@ namespace DemonSlayerMod.Content.NPCs.Bosses
 		protected override int BloodMin => 60;
 		protected override int BloodMax => 100;
 		protected override int Scrolls => 3;
+		protected override int YotoChance => 8;
 	}
 
 	// Mukago, Lower Moon Four: a frightened demon who fights like a cornered animal.

@@ -70,6 +70,7 @@ namespace DemonSlayerMod.Content.NPCs.Bosses
 		protected virtual int BloodMin => 15;
 		protected virtual int BloodMax => 30;
 		protected virtual int Scrolls => 1;
+		protected virtual int YotoChance => 25; // 1 in N chance to drop a Yōtō
 
 		private ref float Timer => ref NPC.ai[0];
 		private ref float State => ref NPC.ai[1];
@@ -418,6 +419,7 @@ namespace DemonSlayerMod.Content.NPCs.Bosses
 		public override void ModifyNPCLoot(NPCLoot npcLoot) {
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DemonBlood>(), 1, BloodMin, BloodMax));
 			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<TrainingScroll>(), 1, Scrolls, Scrolls));
+			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Yoto>(), YotoChance));
 		}
 
 		public override void BossLoot(ref int potionType) {

@@ -249,6 +249,17 @@ def tint_layer(path, color):
     return img
 
 
+def yoto_item():
+    # The Yōtō's inventory fallback: its default build (obsidian katana, crescent guard in crimson lacquer, crimson wrap).
+    base = Image.new("RGBA", (64, 64), CLEAR)
+    for path, color in [(PARTS + "Blade_Katana.png", (30, 25, 45)), (PARTS + "Edge_Katana.png", (255, 120, 140)),
+                        (PARTS + "Hilt.png", (170, 30, 40)), (PARTS + "HiltDiamonds.png", (255, 255, 255)),
+                        (PARTS + "Guard_Crescent.png", (170, 30, 40))]:
+        base = Image.alpha_composite(base, tint_layer(path, color))
+    base.save("Content/Items/Yoto.png")
+    print("wrote Content/Items/Yoto.png 64 x 64")
+
+
 def nichirin_item():
     # The fallback item texture: a black katana with a square black guard and navy wrap (the default build is
     # Tamahagane katana, black blade, round tsuba, black iron, navy wrap).
@@ -875,6 +886,7 @@ def main():
     for g in GUARDS:
         guard(g)
     nichirin_item()
+    yoto_item()
     demon_blood()
     scroll("Content/Items/TrainingScroll.png", (240, 230, 200, 255), (200, 40, 40, 255), (60, 50, 40, 255))
     scroll("Content/Items/ScrollOfForgetting.png", (200, 210, 230, 255), (80, 110, 200, 255), (120, 130, 160, 255))
