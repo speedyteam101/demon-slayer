@@ -1,0 +1,277 @@
+Mods: {
+	DemonSlayerMod: {
+		Items: {
+			NichirinBlade: {
+				DisplayName: Nichirin Blade
+				Tooltip:
+					'''
+					A Demon Slayer's sword, forged from steel that drinks in the sun
+					Demons take full damage only from Nichirin steel and breathing techniques
+					Right-click a Swordsmith's Forge to change its steel, shape, colour, guard, wrap, engraving and trail
+					'''
+			}
+
+			DemonBlood: {
+				DisplayName: Demon Blood
+				Tooltip:
+					'''
+					It's still warm...
+					Used to make lures that draw out powerful demons
+					'''
+			}
+
+			TrainingScroll: {
+				DisplayName: Training Scroll
+				Tooltip:
+					'''
+					Grants 1 extra stat point
+					You can use up to 20
+					'''
+			}
+
+			ScrollOfForgetting: {
+				DisplayName: Scroll of Forgetting
+				Tooltip: Refunds all your stat points so you can spend them again
+			}
+
+			SwordsmithForge: {
+				DisplayName: Swordsmith's Forge
+				Tooltip:
+					'''
+					Right-click it to customise your Nichirin Blade
+					Used to forge Nichirin Blades
+					'''
+			}
+
+			SelectionTag: {
+				DisplayName: Final Selection Tag
+				Tooltip:
+					'''
+					Summons the Hand Demon
+					Only works at night
+					'''
+			}
+
+			SpiderSilkDoll: {
+				DisplayName: Spider Silk Doll
+				Tooltip:
+					'''
+					Summons Rui, Lower Moon Five
+					Only works at night, after the Eye of Cthulhu has been defeated
+					'''
+			}
+
+			TrainTicket: {
+				DisplayName: Infinity Train Ticket
+				Tooltip:
+					'''
+					Summons Enmu, Lower Moon One
+					Only works at night, after Skeletron has been defeated
+					'''
+			}
+
+			DistrictObi: {
+				DisplayName: Entertainment District Obi
+				Tooltip:
+					'''
+					Summons Gyutaro and Daki, Upper Moon Six
+					Only works at night, in Hardmode
+					'''
+			}
+
+			CrackedVase: {
+				DisplayName: Cracked Vase
+				Tooltip:
+					'''
+					Summons Gyokko, Upper Moon Five
+					Only works at night, after a mechanical boss has been defeated
+					'''
+			}
+
+			LeafFan: {
+				DisplayName: Leaf Fan
+				Tooltip:
+					'''
+					Summons Hantengu, Upper Moon Four
+					Only works at night, after all three mechanical bosses have been defeated
+					'''
+			}
+
+			MartialBeads: {
+				DisplayName: Martial Artist's Beads
+				Tooltip:
+					'''
+					Summons Akaza, Upper Moon Three
+					Only works at night, after Plantera has been defeated
+					'''
+			}
+
+			GoldenFan: {
+				DisplayName: Golden Fan
+				Tooltip:
+					'''
+					Summons Doma, Upper Moon Two
+					Only works at night, after Golem has been defeated
+					'''
+			}
+
+			BrokenFlute: {
+				DisplayName: Broken Flute
+				Tooltip:
+					'''
+					Summons Kokushibo, Upper Moon One
+					Only works at night, after the Lunatic Cultist has been defeated
+					'''
+			}
+
+			BlueSpiderLily: {
+				DisplayName: Blue Spider Lily
+				Tooltip:
+					'''
+					Summons Muzan Kibutsuji, the Demon King
+					Only works at night, after the Moon Lord has been defeated
+					'''
+			}
+		}
+
+		NPCs: {
+			LesserDemon.DisplayName: Lesser Demon
+			HornedDemon.DisplayName: Horned Demon
+			SwampDemon.DisplayName: Swamp Demon
+			TemariDemon.DisplayName: Temari Demon
+			ArrowDemon.DisplayName: Arrow Demon
+			DrumDemon.DisplayName: Drum Demon
+			SpiderDemon.DisplayName: Spider Demon
+			TongueDemon.DisplayName: Tongue Demon
+			BloodBrute.DisplayName: Blood Brute
+			BiwaDemon.DisplayName: Biwa Demon
+			IceDemon.DisplayName: Ice Demon
+			SickleDemon.DisplayName: Sickle Demon
+			FleshCrawler.DisplayName: Flesh Crawler
+			ThunderDemon.DisplayName: Thunder Demon
+			VaseFish.DisplayName: Vase Fish
+			EmotionClone.DisplayName: Emotion Clone
+			IceDoll.DisplayName: Ice Doll
+			HandDemon.DisplayName: Hand Demon
+			Rui.DisplayName: Rui
+			Enmu.DisplayName: Enmu
+			GyutaroDaki.DisplayName: Gyutaro & Daki
+			Gyokko.DisplayName: Gyokko
+			Hantengu.DisplayName: Hantengu
+			Akaza.DisplayName: Akaza
+			Doma.DisplayName: Doma
+			Kokushibo.DisplayName: Kokushibo
+			Muzan.DisplayName: Muzan Kibutsuji
+		}
+
+		Bestiary: {
+			LesserDemon: A starving, newly turned demon. Alone it is weak, but there are always more of them after dark.
+			HornedDemon: A demon that has eaten enough people to grow horns and powerful legs. It pounces on anything that moves.
+			SwampDemon: It swims through the earth as if it were water, and drags its prey under.
+			TemariDemon: Plays a deadly game of catch with temari balls that bounce off every wall.
+			ArrowDemon: Its eyes in its palms see every direction; its arrows of blood rarely miss.
+			DrumDemon: Drums grow out of its body. Each beat sends a shockwave ringing through the caves.
+			SpiderDemon: A member of a false 'family' of spiders. It spits webs and waits for its prey to stop struggling.
+			TongueDemon: A floating head with a lashing tongue that slides through rock as easily as air.
+			BloodBrute: A mountain of muscle swollen with a stronger demon's blood.
+			BiwaDemon: Sent through a sliding door by the note of a biwa, from a castle that cannot be found.
+			IceDemon: One of Doma's frozen servants. Its breath freezes the lungs of anyone who inhales it.
+			SickleDemon: Hurls spinning sickles made of its own poisoned blood.
+			FleshCrawler: A burrowing mass of flesh and teeth from deep underground.
+			ThunderDemon: A swordsman who chose to become a demon. Black thunder crackles along his blade.
+			VaseFish: A fish with too many arms, spat out of one of Gyokko's vases.
+			EmotionClone: One of Hantengu's emotions given its own body. Cut one down and another takes its place.
+			IceDoll: A small copy of Doma made of ice. It fights with all of his techniques.
+			HandDemon: A demon made of arms, trapped on a wisteria-ringed mountain for decades, feeding on the candidates of the Final Selection.
+			Rui: Lower Moon Five. A child-like demon who controls threads as sharp as steel, desperate for a 'family' bound by fear.
+			Enmu: Lower Moon One. He drags his victims into dreams, and kills them in their sleep.
+			GyutaroDaki: Upper Moon Six: a brother and sister who share one rank. Flying obi sashes and sickles of poisoned blood.
+			Gyokko: Upper Moon Five. An 'artist' who hides inside his vases and fills the air with water and fish.
+			Hantengu: Upper Moon Four. A cowering old demon who splits into the emotions that fight for him.
+			Akaza: Upper Moon Three. A martial artist who has trained for centuries and only respects the strong.
+			Doma: Upper Moon Two. A smiling cult leader with golden fans and a breath that freezes.
+			Kokushibo: Upper Moon One. A former Demon Slayer who uses Moon Breathing; every slash sheds crescent moons.
+			Muzan: The Demon King, and the first demon. Every demon's blood is his. Kill him and it ends.
+		}
+
+		Projectiles: {
+			BreathWave.DisplayName: Breathing Slash
+			BreathThrust.DisplayName: Breathing Thrust
+			BreathSweep.DisplayName: Breathing Sweep
+			BreathDash.DisplayName: Breathing Dash
+			BreathField.DisplayName: Breathing Flurry
+			BreathSlam.DisplayName: Breathing Slam
+			HandShot.DisplayName: Grasping Hand
+			ThreadShot.DisplayName: Steel Thread
+			DreamShot.DisplayName: Dream Orb
+			TemariBall.DisplayName: Temari Ball
+			DemonArrow.DisplayName: Blood Arrow
+			WebShot.DisplayName: Web
+			BloodShot.DisplayName: Blood Bolt
+			BloodSickle.DisplayName: Blood Sickle
+			ObiSash.DisplayName: Obi Sash
+			VaseWater.DisplayName: Vase Water
+			LeafWind.DisplayName: Fan Gust
+			ShockwaveShot.DisplayName: Shockwave
+			IceShard.DisplayName: Ice Shard
+			MoonBlade.DisplayName: Moon Blade
+			MoonCrescent.DisplayName: Crescent Moon
+			MoonShard.DisplayName: Moon Shard
+			FleshWhip.DisplayName: Flesh Whip
+			ThunderShot.DisplayName: Black Thunder
+			DemonBomb.DisplayName: Blood Burst
+			DemonSpike.DisplayName: Erupting Spike
+		}
+
+		Buffs: {
+			DeadCalmBuff: {
+				DisplayName: Dead Calm
+				Description: +25 defense, 15% less damage taken, immune to knockback
+			}
+			SensesBuff: {
+				DisplayName: Heightened Senses
+				Description: +20% crit chance; you sense enemies and danger
+			}
+			AfterimageBuff: {
+				DisplayName: Afterimage
+				Description: 25% chance to dodge attacks, +20% movement speed
+			}
+			DemonSlayerMarkBuff: {
+				DisplayName: Demon Slayer Mark
+				Description: +25% damage, +20% melee speed, +25% movement speed, 10% less damage taken, fast regeneration
+			}
+		}
+
+		Tiles.SwordsmithForgeTile.MapEntry: Swordsmith's Forge
+
+		Keybinds: {
+			Technique.DisplayName: Use Breathing Technique
+			NextForm.DisplayName: Next Breathing Form
+			PreviousForm.DisplayName: Previous Breathing Form
+			OpenMenu.DisplayName: Open Slayer Menu
+			Mark.DisplayName: Awaken Demon Slayer Mark
+		}
+
+		Configs: {
+			DemonSlayerConfig: {
+				DisplayName: Demon Slayer
+				DemonsResistOtherWeapons: {
+					Label: Demons resist other weapons
+					Tooltip: Demons take 40% less damage from anything that isn't a Nichirin Blade or a breathing technique
+				}
+				DemonsBurnInSunlight: {
+					Label: Demons burn in sunlight
+					Tooltip: Demons out in the open during the day burn away
+				}
+				DemonsRegenerate: {
+					Label: Demons regenerate
+					Tooltip: Demons heal when they haven't been hit for 3 seconds
+				}
+				XPMultiplier: {
+					Label: XP multiplier
+					Tooltip: Multiplies all Demon Slayer XP
+				}
+			}
+		}
+	}
+}

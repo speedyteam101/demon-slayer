@@ -1,0 +1,10 @@
+A fan-made Demon Slayer mod.
+
+- Nichirin Blade: one sword you rebuild at the Swordsmith's Forge. Pick its steel, blade shape, Nichirin colour, guard, guard finish, hilt wrap, engraving and swing trail. Each choice changes its stats and how it looks.
+- Breathing styles: learn 14 of them (Water, Flame, Thunder, Wind, Stone, Mist, Serpent, Love, Insect, Flower, Sound, Beast, Moon and Sun) with about 100 techniques between them. Techniques cost Breath and unlock as your Demon Slayer rank rises.
+- Stats: earn XP by slaying demons, climb from Mizunoto to Hashira, and spend points on Strength, Agility, Endurance, Breath and Focus. Hashira can awaken the Demon Slayer Mark.
+- Demons: 14 demons that roam at night, burn in sunlight, regenerate, and shrug off weapons that aren't Nichirin steel, plus 10 bosses from the Hand Demon to Muzan Kibutsuji.
+
+Keys (rebind them in Controls): F technique, G / V next / previous form, K Slayer menu, X Demon Slayer Mark.
+
+This is an unofficial fan project and is not affiliated with Koyoharu Gotouge, Shueisha or ufotable.
