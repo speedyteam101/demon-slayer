@@ -83,6 +83,9 @@ namespace DemonSlayerMod.Common.UI
 		}
 
 		public override void OnActivate() {
+			if (Main.gameMenu) {
+				return; // no player loaded yet
+			}
 			viewStyle = BreathingStyles.Valid(Slayer.Style) ? Slayer.Style : 0;
 		}
 

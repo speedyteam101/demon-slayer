@@ -27,10 +27,9 @@ namespace DemonSlayerMod.Common.UI
 			if (Main.dedServ) {
 				return;
 			}
+			// Not activated here: SetState activates them when opened, once a player exists.
 			forgeUI = new ForgeUI();
-			forgeUI.Activate();
 			statsUI = new StatsUI();
-			statsUI.Activate();
 			forgeInterface = new UserInterface();
 			statsInterface = new UserInterface();
 		}
