@@ -39,6 +39,7 @@ namespace DemonSlayerMod.Common.Players
 		public int Style = BreathingStyles.None;
 		public int Form;
 		public readonly HashSet<string> Defeated = new(); // demon bosses this character has seen fall
+		public bool IsDemon;                               // accepted Muzan's blood (MysteriousGentleman)
 
 		// Not saved
 		public float Breath;
@@ -377,14 +378,66 @@ namespace DemonSlayerMod.Common.Players
 			if (SlayerKeybinds.Mark.JustPressed) {
 				TryAwakenMark();
 			}
+			if (SlayerKeybinds.DemonForm.JustPressed) {
+				ToggleDemonForm();
+			}
 		}
 
 		private void Fail(string message) {
 			CombatText.NewText(Player.Hitbox, new Color(200, 200, 200), message);
 		}
 
+		public bool InDemonForm => Player.HasBuff<DemonFormBuff>();
+
+		public void ToggleDemonForm() {
+			if (!IsDemon || Player.dead) {
+				return;
+			}
+			if (InDemonForm) {
+				Player.ClearBuff(ModContent.BuffType<DemonFormBuff>());
+				CombatText.NewText(Player.Hitbox, new Color(220, 200, 200), "Human again");
+				return;
+			}
+			if (Main.dayTime) {
+				Fail("Demon form only works at night");
+				return;
+			}
+			Player.AddBuff(ModContent.BuffType<DemonFormBuff>(), 2);
+			SoundEngine.PlaySound(SoundID.NPCDeath10 with { Pitch = 0.3f }, Player.Center);
+			for (int i = 0; i < 30; i++) {
+				Dust.NewDust(Player.position, Player.width, Player.height, DustID.Blood, 0f, -2f, 0, default, 1.5f);
+			}
+			CombatText.NewText(Player.Hitbox, new Color(220, 30, 50), "Demon form!", true);
+		}
+
+		// In demon form, without a Nichirin Blade in hand, the technique key fires a Blood Demon Art.
+		private void BloodDemonArt() {
+			const int cost = 15;
+			if (TechniqueCooldown > 0) {
+				return;
+			}
+			if (Breath < cost) {
+				Fail("Out of breath!");
+				return;
+			}
+			Breath -= cost;
+			BreathDelay = 30;
+			TechniqueCooldown = TechniqueCooldownMax = 20;
+			int damage = (int)(Player.GetTotalDamage(DamageClass.Melee).ApplyTo(20 + Level * 2));
+			Vector2 aim = (Main.MouseWorld - Player.Center).SafeNormalize(Vector2.UnitX * Player.direction);
+			for (int i = -1; i <= 1; i++) {
+				Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, aim.RotatedBy(i * 0.15f) * 16f,
+					ModContent.ProjectileType<Content.Projectiles.BloodArtShot>(), damage, 4f, Player.whoAmI);
+			}
+			SoundEngine.PlaySound(SoundID.Item17, Player.Center);
+		}
+
 		public void TryUseTechnique() {
 			if (Player.dead || Player.CCed || Player.noItems) {
+				return;
+			}
+			if (InDemonForm && !HoldingBlade) {
+				BloodDemonArt();
 				return;
 			}
 			if (!HoldingBlade) {
@@ -445,6 +498,7 @@ namespace DemonSlayerMod.Common.Players
 			tag["style"] = Style;
 			tag["form"] = Form;
 			tag["defeated"] = Defeated.ToList();
+			tag["isDemon"] = IsDemon;
 		}
 
 		public override void LoadData(TagCompound tag) {
@@ -463,6 +517,7 @@ namespace DemonSlayerMod.Common.Players
 				Style = BreathingStyles.None;
 			}
 			Form = tag.GetInt("form");
+			IsDemon = tag.GetBool("isDemon");
 			Defeated.Clear();
 			foreach (string key in tag.GetList<string>("defeated")) {
 				Defeated.Add(key);

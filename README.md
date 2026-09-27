@@ -103,6 +103,15 @@ Demons come out at night. They **burn in sunlight**, **regenerate** when left al
 
 Life values are for Classic mode (Expert and Master scale them up as usual). All 14 bosses mix 12 attack patterns (aimed fans, rings, spirals, charges, minions, rain, ground spikes, teleports, fast barrages, warning-circle bombs, splitting crescent moons and sweeping walls). Every boss speeds up below half health, and the Upper Moons and Muzan enrage again below a quarter.
 
+## Becoming a demon
+
+Very rarely, a **Mysterious Gentleman** appears on the surface at night. He is Muzan Kibutsuji in disguise: he can't be hurt, and he vanishes at dawn. Talk to him and choose **Accept his blood** to become a demon (permanent for that character).
+
+- Press **Z** (Toggle Demon Form) **at night** to transform, and again to turn back. You can't transform during the day, and at dawn you're turned back automatically.
+- Demon form: +20% damage (+2% per Slayer rank), +15% melee speed, +25% movement speed, +10 defense (+1 per rank), fast life regeneration (+6 HP/s, more with rank), much higher jumps, no fall damage, night vision, immunity to Poisoned and Bleeding.
+- With no Nichirin Blade in hand, the technique key (F) fires a **Blood Demon Art**: three lashes of blood that make enemies bleed and sometimes heal you (15 Breath).
+- You can still use your Nichirin Blade and breathing techniques in demon form.
+
 ## Gear
 
 | Item | Effect | Recipe |

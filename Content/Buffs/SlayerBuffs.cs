@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace DemonSlayerMod.Content.Buffs
@@ -60,6 +61,46 @@ namespace DemonSlayerMod.Content.Buffs
 
 		public override void Update(Player player, ref int buffIndex) {
 			Common.Players.SlayerPlayer.Get(player).WisteriaPoison = true;
+		}
+	}
+
+	// Demon form, granted by Muzan's blood. Night only: it ends by itself at dawn.
+	// Bonuses grow with your Slayer rank.
+	public class DemonFormBuff : ModBuff
+	{
+		public override void SetStaticDefaults() {
+			Main.buffNoTimeDisplay[Type] = true;
+			Main.buffNoSave[Type] = true;
+		}
+
+		public override void Update(Player player, ref int buffIndex) {
+			if (Main.dayTime) {
+				player.DelBuff(buffIndex);
+				buffIndex--;
+				if (player.whoAmI == Main.myPlayer) {
+					Main.NewText("The sun rises. Your demon form fades.", 220, 40, 60);
+				}
+				return;
+			}
+			player.buffTime[buffIndex] = 2;
+
+			int rank = Common.Players.SlayerPlayer.Get(player).Rank;
+			player.GetDamage(DamageClass.Generic) += 0.2f + rank * 0.02f;
+			player.GetAttackSpeed(DamageClass.Melee) += 0.15f;
+			player.moveSpeed += 0.25f;
+			player.statDefense += 10 + rank;
+			player.lifeRegen += 12 + rank;
+			player.jumpSpeedBoost += 2.5f;
+			player.noFallDmg = true;
+			player.nightVision = true;
+			player.buffImmune[BuffID.Poisoned] = true;
+			player.buffImmune[BuffID.Bleeding] = true;
+
+			if (Main.rand.NextBool(4)) {
+				Dust dust = Dust.NewDustDirect(player.position, player.width, player.height, DustID.Blood, 0f, -1f, 0, default, 1.1f);
+				dust.noGravity = true;
+			}
+			Lighting.AddLight(player.Center, 0.4f, 0.02f, 0.05f);
 		}
 	}
 }

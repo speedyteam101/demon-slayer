@@ -249,6 +249,7 @@ Mods: {
 		}
 
 		NPCs: {
+			MysteriousGentleman.DisplayName: Mysterious Gentleman
 			SandDemon.DisplayName: Sand Demon
 			MantisDemon.DisplayName: Mantis Demon
 			DrownedDemon.DisplayName: Drowned Demon
@@ -290,6 +291,7 @@ Mods: {
 		}
 
 		Bestiary: {
+			MysteriousGentleman: A pale man in a fine suit who appears on lonely roads at night. His eyes are the colour of plum blossoms... or blood. Some say he offers power to those who ask.
 			SandDemon: It swims through desert sand at night and spits grit into its prey's eyes.
 			MantisDemon: Its arms have grown into scything blades. It waits among the jungle leaves.
 			DrownedDemon: A demon that hid from the sun beneath the waves and rises only at night.
@@ -331,6 +333,7 @@ Mods: {
 		}
 
 		Projectiles: {
+			BloodArtShot.DisplayName: Blood Demon Art
 			HellfireShot.DisplayName: Hellfire Bolt
 			PrismShot.DisplayName: Prism Beam
 			SandShot.DisplayName: Grit
@@ -365,6 +368,10 @@ Mods: {
 		}
 
 		Buffs: {
+			DemonFormBuff: {
+				DisplayName: Demon Form
+				Description: Muzan's blood burns in your veins. Stronger, faster, regenerating. Ends at dawn
+			}
 			WisteriaPoisonBuff: {
 				DisplayName: Wisteria Poison
 				Description: Blade and technique hits inflict Venom and deal 10% more damage to demons
@@ -394,6 +401,7 @@ Mods: {
 		Tiles.SwordsmithForgeTile.MapEntry: Swordsmith's Forge
 
 		Keybinds: {
+			DemonForm.DisplayName: Toggle Demon Form
 			Technique.DisplayName: Use Breathing Technique
 			NextForm.DisplayName: Next Breathing Form
 			PreviousForm.DisplayName: Previous Breathing Form

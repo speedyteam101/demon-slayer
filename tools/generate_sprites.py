@@ -885,6 +885,9 @@ def main():
     demon_shapes()
     demons()
     more_items()
+    npc_sheet("MysteriousGentleman", 28, 48, humanoid, dict(skin=PALE, cloth=(30, 30, 35, 255), hair=(20, 20, 25, 255), hairstyle="hat",
+                                                             belt=(240, 240, 240, 255), eye=(230, 30, 40, 255)), "Content/NPCs/Town/")
+    buff_icon("Content/Buffs/DemonFormBuff.png", (220, 30, 50, 255), "eye")
     buff_icon("Content/Buffs/WisteriaPoisonBuff.png", (180, 130, 240, 255), "wave")
     buff_icon("Content/Pets/KasugaiCrowBuff.png", (60, 60, 80, 255), "eye")
     buff_icon("Content/Buffs/DeadCalmBuff.png", (90, 160, 255, 255), "wave")
