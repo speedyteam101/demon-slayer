@@ -1,6 +1,120 @@
 Mods: {
 	DemonSlayerMod: {
 		Items: {
+			WoodenCharm: {
+				DisplayName: Wooden Charm
+				Tooltip:
+					'''
+					Summons Mukago, Lower Moon Four
+					Only works at night, after the Eye of Cthulhu has been defeated
+					'''
+			}
+
+			TsuzumiDrum: {
+				DisplayName: Tsuzumi Drum
+				Tooltip:
+					'''
+					Summons Kyogai, the former Lower Moon Six
+					Only works at night, after the Eater of Worlds or Brain of Cthulhu has been defeated
+					'''
+			}
+
+			CrackedMagatama: {
+				DisplayName: Cracked Magatama
+				Tooltip:
+					'''
+					Summons Kaigaku, the new Upper Moon Six
+					Only works at night, after all three mechanical bosses have been defeated
+					'''
+			}
+
+			BiwaString: {
+				DisplayName: Biwa String
+				Tooltip:
+					'''
+					Summons Nakime, the new Upper Moon Four
+					Only works at night, after Golem has been defeated
+					'''
+			}
+
+			CorpsUniform: {
+				DisplayName: Corps Uniform
+				Tooltip:
+					'''
+					+20 max Breath
+					"Woven from special fibres that shrug off lesser demons' claws"
+					'''
+			}
+
+			WaterHaori: {
+				DisplayName: Two-Pattern Haori
+				Tooltip:
+					'''
+					+25% Breath regeneration
+					6% increased melee speed
+					'''
+			}
+
+			FlameHaori: {
+				DisplayName: Flame Haori
+				Tooltip:
+					'''
+					8% increased melee damage
+					Immunity to On Fire! and Burning
+					'''
+			}
+
+			ButterflyHaori: {
+				DisplayName: Butterfly Haori
+				Tooltip:
+					'''
+					10% increased movement speed
+					8% increased melee critical strike chance
+					'''
+			}
+
+			CheckeredHaori: {
+				DisplayName: Checkered Haori
+				Tooltip: +10% breathing technique damage
+			}
+
+			HanafudaEarrings: {
+				DisplayName: Hanafuda Earrings
+				Tooltip:
+					'''
+					+25% Breath regeneration
+					+20% technique damage with Sun Breathing
+					'''
+			}
+
+			WisteriaCharm: {
+				DisplayName: Wisteria Charm
+				Tooltip: Demons and their attacks deal 20% less damage to you
+			}
+
+			WisteriaPoison: {
+				DisplayName: Wisteria Poison
+				Tooltip:
+					'''
+					Coats your blade with wisteria poison
+					Blade and technique hits inflict Venom and deal 10% more damage to demons
+					'''
+			}
+
+			ButterflyMedicine: {
+				DisplayName: Butterfly Mansion Medicine
+				Tooltip: A remedy from the Butterfly Mansion
+			}
+
+			CrowWhistle: {
+				DisplayName: Crow Whistle
+				Tooltip:
+					'''
+					Summons a Kasugai Crow
+					It caws when demons are near
+					'''
+			}
+
 			NichirinBlade: {
 				DisplayName: Nichirin Blade
 				Tooltip:
@@ -135,6 +249,17 @@ Mods: {
 		}
 
 		NPCs: {
+			SandDemon.DisplayName: Sand Demon
+			MantisDemon.DisplayName: Mantis Demon
+			DrownedDemon.DisplayName: Drowned Demon
+			HellfireDemon.DisplayName: Hellfire Demon
+			HollowDemon.DisplayName: Hollow Demon
+			FrostbittenDemon.DisplayName: Frostbitten Demon
+			MirrorDemon.DisplayName: Mirror Demon
+			Mukago.DisplayName: Mukago
+			Kyogai.DisplayName: Kyogai
+			Kaigaku.DisplayName: Kaigaku
+			Nakime.DisplayName: Nakime
 			LesserDemon.DisplayName: Lesser Demon
 			HornedDemon.DisplayName: Horned Demon
 			SwampDemon.DisplayName: Swamp Demon
@@ -165,6 +290,17 @@ Mods: {
 		}
 
 		Bestiary: {
+			SandDemon: It swims through desert sand at night and spits grit into its prey's eyes.
+			MantisDemon: Its arms have grown into scything blades. It waits among the jungle leaves.
+			DrownedDemon: A demon that hid from the sun beneath the waves and rises only at night.
+			HellfireDemon: It fled the sun all the way down to the Underworld, and learned to love the flames.
+			HollowDemon: Its eyes are empty pits. The corruption of the land has seeped into its blood.
+			FrostbittenDemon: Too numb with cold to feel pain, it never stops walking.
+			MirrorDemon: Its body is a shattered mirror that scatters light into dizzying beams.
+			Mukago: Lower Moon Four. A frightened demon who fights like a cornered animal.
+			Kyogai: The former Lower Moon Six. Each beat of the drums in his body spins the room around you.
+			Kaigaku: The new Upper Moon Six. A Thunder Breathing swordsman who chose to become a demon, wreathed in black lightning.
+			Nakime: The new Upper Moon Four, mistress of the Infinity Castle. Every note of her biwa reshapes the world around you.
 			LesserDemon: A starving, newly turned demon. Alone it is weak, but there are always more of them after dark.
 			HornedDemon: A demon that has eaten enough people to grow horns and powerful legs. It pounces on anything that moves.
 			SwampDemon: It swims through the earth as if it were water, and drags its prey under.
@@ -195,6 +331,11 @@ Mods: {
 		}
 
 		Projectiles: {
+			HellfireShot.DisplayName: Hellfire Bolt
+			PrismShot.DisplayName: Prism Beam
+			SandShot.DisplayName: Grit
+			BiwaNote.DisplayName: Biwa Note
+			KasugaiCrow.DisplayName: Kasugai Crow
 			BreathWave.DisplayName: Breathing Slash
 			BreathThrust.DisplayName: Breathing Thrust
 			BreathSweep.DisplayName: Breathing Sweep
@@ -224,6 +365,14 @@ Mods: {
 		}
 
 		Buffs: {
+			WisteriaPoisonBuff: {
+				DisplayName: Wisteria Poison
+				Description: Blade and technique hits inflict Venom and deal 10% more damage to demons
+			}
+			KasugaiCrowBuff: {
+				DisplayName: Kasugai Crow
+				Description: A crow is keeping watch for demons
+			}
 			DeadCalmBuff: {
 				DisplayName: Dead Calm
 				Description: +25 defense, 15% less damage taken, immune to knockback

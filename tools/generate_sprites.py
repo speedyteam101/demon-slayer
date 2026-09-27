@@ -101,10 +101,26 @@ def profile(shape):
             s.append((t, -2.2, 2.4))
         s.append((38.5, -1.6, 1.8))
         s.append((40.5, 0, 0.2))
+    elif shape == "Tachi":
+        for t in range(13, 40):
+            bend = 0.035 * (t - 13) ** 1.5 / 5    # curves toward the spine
+            s.append((t, -1.0 - bend, 1.1 - bend))
+        s.append((42, -1.6, -1.2))
+    elif shape == "Crescent":
+        for t in range(13, 37):
+            bend = 2.2 * math.sin((t - 13) / 24 * math.pi)
+            s.append((t, -1.1 + bend, 1.2 + bend))
+        s.append((39.5, -0.2, 0.3))
+    elif shape == "Chisel":
+        for t in range(13, 35):
+            s.append((t, -1.7, 1.8))
+        s.append((36, -1.7, 1.8))
+        s.append((36.5, -1.7, -0.5))
     return s
 
 
-SHAPES = ["Katana", "Nodachi", "Wakizashi", "Cleaver", "Stinger", "Ribbon", "Serpent", "Jagged", "Greatblade"]
+SHAPES = ["Katana", "Nodachi", "Wakizashi", "Cleaver", "Stinger", "Ribbon", "Serpent", "Jagged", "Greatblade",
+          "Tachi", "Crescent", "Chisel"]
 
 
 def blade_layers(shape):
@@ -192,10 +208,34 @@ def guard(name):
         inner = [(g - 0.2 + 1.2 * math.cos(a), 3.0 * math.sin(a)) for a in [math.pi * 1.5 - i * math.pi / 10 for i in range(11)]]
         poly(d, outer + inner, mid)
         poly(d, [(g - 0.3, -1.2), (g + 0.3, -1.2), (g + 0.3, 1.2), (g - 0.3, 1.2)], light)
+    elif name == "Star":
+        pts = []
+        for i in range(10):
+            a = i * math.pi / 5
+            r = 4.6 if i % 2 == 0 else 2.0
+            pts.append((g + 0.45 * r * math.cos(a), r * math.sin(a)))
+        poly(d, pts, mid)
+        poly(d, [(g - 0.3, -0.8), (g + 0.3, -0.8), (g + 0.3, 0.8), (g - 0.3, 0.8)], light)
+    elif name == "Sun":
+        pts = [(g + 1.2 * math.cos(a), 3.0 * math.sin(a)) for a in [i * math.pi / 8 for i in range(16)]]
+        poly(d, pts, mid)
+        for i in range(8):
+            a = i * math.pi / 4
+            d.line([P(g + 1.2 * math.cos(a), 3.0 * math.sin(a)), P(g + 1.9 * math.cos(a), 4.6 * math.sin(a))], fill=light)
+    elif name == "Cross":
+        poly(d, [(g - 0.8, -4.4), (g + 0.8, -4.4), (g + 0.8, 4.4), (g - 0.8, 4.4)], mid)
+        poly(d, [(g - 2.2, -1.0), (g + 2.2, -1.0), (g + 2.2, 1.0), (g - 2.2, 1.0)], mid)
+        poly(d, [(g - 0.3, -4.2), (g + 0.3, -4.2), (g + 0.3, 4.2), (g - 0.3, 4.2)], light)
+    elif name == "Wave":
+        pts = [(g + 1.0 * math.sin(w * 1.6), w) for w in [x * 0.4 for x in range(-11, 12)]]
+        d.line([P(t, w) for t, w in pts], fill=mid, width=2)
+        pts2 = [(g + 0.9 + 1.0 * math.sin(w * 1.6), w) for w in [x * 0.4 for x in range(-9, 10)]]
+        d.line([P(t, w) for t, w in pts2], fill=light, width=1)
     save(img, PARTS + "Guard_" + name + ".png")
 
 
-GUARDS = ["Round", "Square", "Flame", "Hexagon", "Flower", "Butterfly", "Wheel", "Clover", "Serpent", "Crescent"]
+GUARDS = ["Round", "Square", "Flame", "Hexagon", "Flower", "Butterfly", "Wheel", "Clover", "Serpent", "Crescent",
+          "Star", "Sun", "Cross", "Wave"]
 
 
 def tint_layer(path, color):
@@ -363,6 +403,111 @@ def summon_items():
     save(img, out + "BlueSpiderLily.png")
 
 
+def more_items():
+    out = "Content/Items/"
+    # Mukago's wooden charm
+    img, d = canvas(12, 12)
+    d.ellipse([1, 1, 10, 10], fill=(160, 110, 60, 255))
+    d.ellipse([3, 3, 8, 8], fill=(200, 150, 90, 255))
+    d.line([5, 3, 6, 8], fill=(200, 40, 40, 255))
+    save(img, out + "WoodenCharm.png")
+    # Tsuzumi drum
+    img, d = canvas(12, 12)
+    d.ellipse([0, 1, 5, 11], fill=(230, 220, 200, 255))
+    d.ellipse([7, 1, 11, 11], fill=(230, 220, 200, 255))
+    d.rectangle([3, 4, 9, 8], fill=(150, 40, 40, 255))
+    d.line([2, 2, 9, 9], fill=(240, 170, 60, 255))
+    d.line([2, 9, 9, 2], fill=(240, 170, 60, 255))
+    save(img, out + "TsuzumiDrum.png")
+    # Cracked magatama
+    img, d = canvas(12, 12)
+    d.ellipse([2, 1, 10, 9], fill=(255, 210, 60, 255))
+    d.ellipse([5, 5, 11, 11], fill=CLEAR)
+    d.polygon([(2, 5), (5, 11), (6, 8)], fill=(255, 210, 60, 255))
+    d.line([6, 2, 8, 6], fill=BLACK)
+    save(img, out + "CrackedMagatama.png")
+    # Biwa string (a coiled string with a plectrum)
+    img, d = canvas(12, 12)
+    d.arc([1, 1, 10, 10], 0, 330, fill=(240, 230, 200, 255))
+    d.arc([3, 3, 8, 8], 30, 360, fill=(240, 230, 200, 255))
+    d.polygon([(7, 7), (11, 9), (8, 11)], fill=(140, 80, 40, 255))
+    save(img, out + "BiwaString.png")
+
+    def haori(name, left, right, trim=None, pattern=None):
+        img, d = canvas(14, 14)
+        d.polygon([(1, 2), (7, 1), (7, 13), (0, 13)], fill=left)
+        d.polygon([(7, 1), (13, 2), (14, 13), (7, 13)], fill=right)
+        d.rectangle([5, 1, 8, 13], fill=(30, 30, 35, 255))
+        if pattern == "check":
+            for y in range(2, 13, 2):
+                for x in range(0, 14, 2):
+                    if (x // 2 + y // 2) % 2 == 0 and not 5 <= x <= 8:
+                        d.point((x, y), fill=BLACK)
+        if pattern == "flame":
+            for x in range(0, 14, 2):
+                d.line([x, 13, x + 1, 10], fill=(250, 120, 30, 255))
+        if pattern == "butterfly":
+            for x, y in ((2, 6), (11, 6), (3, 10), (10, 10)):
+                d.point((x, y), fill=(120, 60, 160, 255))
+        if trim:
+            d.line([0, 13, 14, 13], fill=trim)
+        save(img, out + name + ".png")
+
+    haori("CorpsUniform", (30, 30, 40, 255), (30, 30, 40, 255), trim=(230, 220, 190, 255))
+    haori("WaterHaori", (150, 40, 50, 255), (80, 150, 90, 255), pattern="check")
+    haori("FlameHaori", (240, 240, 235, 255), (240, 240, 235, 255), pattern="flame")
+    haori("ButterflyHaori", (250, 200, 220, 255), (190, 230, 240, 255), pattern="butterfly")
+    haori("CheckeredHaori", (40, 150, 100, 255), (40, 150, 100, 255), pattern="check")
+    # Hanafuda earrings
+    img, d = canvas(12, 12)
+    for x in (1, 7):
+        d.line([x + 2, 0, x + 2, 2], fill=(200, 200, 200, 255))
+        d.rectangle([x, 2, x + 4, 10], fill=(245, 240, 225, 255))
+        d.ellipse([x + 1, 3, x + 3, 6], fill=(230, 60, 40, 255))
+        d.line([x, 8, x + 4, 8], fill=(40, 40, 40, 255))
+    save(img, out + "HanafudaEarrings.png")
+    # Wisteria charm
+    img, d = canvas(12, 14)
+    d.line([6, 0, 6, 3], fill=(120, 80, 40, 255))
+    for i, y in enumerate(range(3, 13, 2)):
+        wdt = 4 - i // 2
+        d.ellipse([6 - wdt, y, 6 + wdt, y + 2], fill=(180, 140, 230, 255) if i % 2 else (150, 110, 210, 255))
+    save(img, out + "WisteriaCharm.png")
+    # Wisteria poison flask
+    img, d = canvas(8, 12)
+    d.rectangle([3, 0, 4, 2], fill=(150, 110, 70, 255))
+    d.ellipse([0, 3, 7, 11], fill=(200, 210, 220, 200))
+    d.ellipse([1, 5, 6, 10], fill=(170, 110, 230, 255))
+    save(img, out + "WisteriaPoison.png")
+    # Butterfly medicine
+    img, d = canvas(10, 13)
+    d.rectangle([4, 0, 5, 2], fill=(150, 110, 70, 255))
+    d.ellipse([1, 3, 8, 12], fill=(200, 210, 220, 200))
+    d.ellipse([2, 5, 7, 11], fill=(120, 200, 240, 255))
+    d.point((4, 7), fill=(250, 150, 200, 255)); d.point((5, 7), fill=(250, 150, 200, 255))
+    save(img, out + "ButterflyMedicine.png")
+    # Crow whistle
+    img, d = canvas(12, 12)
+    d.rectangle([1, 5, 9, 7], fill=(140, 90, 50, 255))
+    d.rectangle([9, 4, 11, 8], fill=(110, 70, 40, 255))
+    d.point((4, 5), fill=BLACK)
+    d.polygon([(2, 1), (5, 0), (7, 2), (4, 3)], fill=(30, 30, 35, 255))
+    save(img, out + "CrowWhistle.png")
+
+    # Kasugai crow pet: 4 frames of 12x10 (half size), facing LEFT.
+    img, d = canvas(12, 40)
+    for f in range(4):
+        oy = f * 10
+        wing = [0, -2, -3, -1][f]
+        d.ellipse([3, oy + 3, 10, oy + 8], fill=(30, 30, 38, 255))
+        d.ellipse([1, oy + 2, 5, oy + 6], fill=(30, 30, 38, 255))
+        d.point((0, oy + 4), fill=(230, 180, 60, 255))
+        d.point((2, oy + 3), fill=WHITE)
+        d.polygon([(5, oy + 5), (9, oy + 5 + wing), (8, oy + 6)], fill=(55, 55, 65, 255))
+        d.line([10, oy + 6, 11, oy + 7], fill=(30, 30, 38, 255))
+    save(img, "Content/Pets/KasugaiCrow.png")
+
+
 # ---------------------------------------------------------------------------------------------------------------------
 # Projectiles (white shapes, tinted in game)
 # ---------------------------------------------------------------------------------------------------------------------
@@ -525,6 +670,13 @@ def humanoid(d, w, h, f, spec, oy):
         for y in range(body_top + 1, body_bottom, 2):
             d.point((cx - 2, y), fill=(60, 120, 230, 255))
             d.point((cx + 2, y), fill=(60, 120, 230, 255))
+    elif held == "biwa":
+        d.ellipse([cx - 8, body_top + 3, cx - 3, body_top + 9], fill=(150, 90, 50, 255))
+        d.line([cx - 5, body_top + 4, cx - 9, body_top - 3], fill=(110, 60, 30, 255))
+        d.line([cx - 6, body_top + 5, cx - 6, body_top + 8], fill=(240, 230, 200, 255))
+    elif held == "claws2":
+        d.line([cx - 5 - swing, body_top + 6, cx - 9 - swing, body_top + 2], fill=(120, 200, 90, 255), width=1)
+        d.line([cx + 5 + swing, body_top + 6, cx + 8 + swing, body_top + 2], fill=(90, 160, 70, 255), width=1)
     elif held == "eyehands":
         d.point((cx - 5 - swing, body_top + 7), fill=(230, 40, 40, 255))
         d.point((cx + 5 + swing, body_top + 7), fill=(230, 40, 40, 255))
@@ -644,6 +796,13 @@ def demons():
     npc_sheet("ThunderDemon", 28, 44, humanoid, dict(skin=(200, 180, 170, 255), cloth=(30, 30, 40, 255), hair=(40, 40, 40, 255), held="sword", eye=(255, 220, 60, 255), marks=(255, 220, 60, 255)), e)
     npc_sheet("VaseFish", 26, 22, fish, dict(skin=(240, 150, 150, 255)), e)
     npc_sheet("EmotionClone", 28, 44, humanoid, dict(skin=(200, 170, 140, 255), cloth=(180, 60, 50, 255), horns=(230, 220, 200, 255), float=True, hairstyle="bald", held="fans"), e)
+    npc_sheet("SandDemon", 30, 30, blob, dict(skin=(205, 175, 110, 255)), e)
+    npc_sheet("MantisDemon", 28, 44, humanoid, dict(skin=(120, 180, 90, 255), cloth=(60, 110, 50, 255), hairstyle="bald", held="claws2", eye=(250, 220, 60, 255)), e)
+    npc_sheet("DrownedDemon", 28, 44, humanoid, dict(skin=(150, 190, 200, 255), cloth=(40, 70, 110, 255), hair=(30, 60, 70, 255), hairstyle="long", float=True), e)
+    npc_sheet("HellfireDemon", 28, 44, humanoid, dict(skin=(220, 90, 50, 255), cloth=(90, 20, 10, 255), horns=(40, 20, 20, 255), hairstyle="bald", float=True, eye=(255, 230, 80, 255)), e)
+    npc_sheet("HollowDemon", 28, 44, humanoid, dict(skin=(150, 130, 160, 255), cloth=(70, 50, 90, 255), hairstyle="spiky", hair=(40, 30, 60, 255), claws=True, eye=(20, 10, 20, 255)), e)
+    npc_sheet("FrostbittenDemon", 28, 44, humanoid, dict(skin=(190, 210, 230, 255), cloth=(90, 110, 150, 255), hair=(230, 240, 250, 255), claws=True), e)
+    npc_sheet("MirrorDemon", 28, 44, humanoid, dict(skin=(245, 220, 245, 255), cloth=(200, 170, 240, 255), hair=(255, 190, 240, 255), float=True, pattern=(255, 255, 255, 255), eye=(120, 220, 255, 255)), e)
     npc_sheet("IceDoll", 28, 44, humanoid, dict(skin=(210, 235, 250, 255), cloth=(170, 210, 240, 255), hair=(240, 245, 255, 255), float=True, held="fans", eye=(120, 220, 255, 255)), e)
 
     b = "Content/NPCs/Bosses/"
@@ -658,6 +817,12 @@ def demons():
         ("Doma", 36, 62, humanoid, dict(skin=PALE, cloth=(40, 40, 50, 255), hair=(240, 230, 210, 255), belt=(200, 40, 40, 255), held="fans", eye=(170, 120, 230, 255))),
         ("Kokushibo", 40, 68, humanoid, dict(skin=(200, 150, 150, 255), cloth=(110, 50, 110, 255), hair=(20, 20, 25, 255), hairstyle="long", held="sword", six_eyes=True, eye=(250, 220, 60, 255), marks=(200, 40, 40, 255))),
         ("Muzan", 40, 70, humanoid, dict(skin=PALE, cloth=(30, 30, 35, 255), hair=(20, 20, 25, 255), hairstyle="hat", belt=(240, 240, 240, 255), held="whips", eye=(230, 30, 40, 255))),
+    ]
+    bosses += [
+        ("Mukago", 32, 54, humanoid, dict(skin=PALE, cloth=(120, 90, 140, 255), hair=(40, 30, 50, 255), hairstyle="long", claws=True, marks=(200, 40, 40, 255))),
+        ("Kyogai", 40, 60, humanoid, dict(skin=(210, 180, 160, 255), cloth=(150, 110, 70, 255), hair=(60, 40, 30, 255), hairstyle="long", held="drums", horns=(230, 220, 200, 255))),
+        ("Kaigaku", 34, 60, humanoid, dict(skin=(215, 195, 180, 255), cloth=(25, 25, 30, 255), hair=(30, 30, 30, 255), hairstyle="spiky", held="sword", eye=(255, 220, 60, 255), marks=(255, 220, 60, 255), pattern=(255, 220, 60, 255))),
+        ("Nakime", 36, 60, humanoid, dict(skin=PALE, cloth=(120, 40, 70, 255), hair=(15, 15, 20, 255), hairstyle="long", float=True, held="biwa", eye=(250, 220, 60, 255))),
     ]
     for name, w, h, drawer, spec in bosses:
         sheet = npc_sheet(name, w, h, drawer, spec, b)
@@ -719,6 +884,9 @@ def main():
     breath_shapes()
     demon_shapes()
     demons()
+    more_items()
+    buff_icon("Content/Buffs/WisteriaPoisonBuff.png", (180, 130, 240, 255), "wave")
+    buff_icon("Content/Pets/KasugaiCrowBuff.png", (60, 60, 80, 255), "eye")
     buff_icon("Content/Buffs/DeadCalmBuff.png", (90, 160, 255, 255), "wave")
     buff_icon("Content/Buffs/SensesBuff.png", (250, 120, 180, 255), "eye")
     buff_icon("Content/Buffs/AfterimageBuff.png", (200, 200, 230, 255), "ghost")

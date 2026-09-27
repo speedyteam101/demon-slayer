@@ -21,6 +21,10 @@ namespace DemonSlayerMod.Content.NPCs.Bosses
 			["Doma"] = 18000,
 			["Kokushibo"] = 25000,
 			["Muzan"] = 50000,
+			["Mukago"] = 1100,
+			["Kyogai"] = 2000,
+			["Kaigaku"] = 12000,
+			["Nakime"] = 20000,
 		};
 
 		public static long XPFor(string key) => FirstKillXP.TryGetValue(key, out long xp) ? xp : 1000;
@@ -249,5 +253,92 @@ namespace DemonSlayerMod.Content.NPCs.Bosses
 		protected override int BloodMin => 60;
 		protected override int BloodMax => 100;
 		protected override int Scrolls => 3;
+	}
+
+	// Mukago, Lower Moon Four: a frightened demon who fights like a cornered animal.
+	[AutoloadBossHead]
+	public class Mukago : DemonBossBase
+	{
+		protected override BossMove Movement => BossMove.Stalk;
+		protected override BossAttack[] Attacks => [BossAttack.Charge, BossAttack.Spread, BossAttack.Summon, BossAttack.Charge, BossAttack.Ring];
+		protected override int ShotType => ModContent.ProjectileType<BloodShot>();
+		protected override int Life => 4200;
+		protected override int Damage => 26;
+		protected override int Defense => 10;
+		protected override int Width => 32;
+		protected override int Height => 54;
+		protected override int MinionType => ModContent.NPCType<LesserDemon>();
+		protected override float ShotSpeed => 9f;
+		protected override int MusicTrack => MusicID.Boss1;
+		protected override int PotionType => ItemID.LesserHealingPotion;
+		protected override int ValueGold => 4;
+		protected override int BloodMin => 10;
+		protected override int BloodMax => 18;
+	}
+
+	// Kyogai, the former Lower Moon Six: each beat of his drums spins the room and sends claw marks flying.
+	[AutoloadBossHead]
+	public class Kyogai : DemonBossBase
+	{
+		protected override BossMove Movement => BossMove.Walk;
+		protected override BossAttack[] Attacks => [BossAttack.Ring, BossAttack.Teleport, BossAttack.Spread, BossAttack.Spikes, BossAttack.Wall, BossAttack.Teleport];
+		protected override int ShotType => ModContent.ProjectileType<ShockwaveShot>();
+		protected override int Life => 7000;
+		protected override int Damage => 32;
+		protected override int Defense => 14;
+		protected override int Width => 40;
+		protected override int Height => 60;
+		protected override float ShotSpeed => 8f;
+		protected override int MusicTrack => MusicID.Boss3;
+		protected override int PotionType => ItemID.LesserHealingPotion;
+		protected override int ValueGold => 6;
+	}
+
+	// Kaigaku, the new Upper Moon Six: a Thunder Breathing swordsman turned demon, wreathed in black lightning.
+	[AutoloadBossHead]
+	public class Kaigaku : DemonBossBase
+	{
+		protected override BossMove Movement => BossMove.Stalk;
+		protected override BossAttack[] Attacks => [BossAttack.Charge, BossAttack.Barrage, BossAttack.Rain, BossAttack.Teleport, BossAttack.Charge, BossAttack.Spread, BossAttack.Crescents];
+		protected override int ShotType => ModContent.ProjectileType<ThunderShot>();
+		protected override int CrescentType => ModContent.ProjectileType<MoonBlade>();
+		protected override int Life => 58000;
+		protected override int Damage => 92;
+		protected override int Defense => 40;
+		protected override int Width => 34;
+		protected override int Height => 60;
+		protected override float ShotSpeed => 15f;
+		protected override float MoveSpeed => 17f;
+		protected override int MoveTicks => 55;
+		protected override bool Enrage => true;
+		protected override int HitDust => DustID.Electric;
+		protected override int MusicTrack => MusicID.Boss2;
+		protected override int ValueGold => 22;
+		protected override int BloodMin => 25;
+		protected override int BloodMax => 40;
+	}
+
+	// Nakime, the new Upper Moon Four: mistress of the Infinity Castle, who reshapes it with her biwa.
+	[AutoloadBossHead]
+	public class Nakime : DemonBossBase
+	{
+		protected override BossMove Movement => BossMove.Hover;
+		protected override BossAttack[] Attacks => [BossAttack.Teleport, BossAttack.Wall, BossAttack.Summon, BossAttack.Bombs, BossAttack.Teleport, BossAttack.Spiral, BossAttack.Spikes];
+		protected override int ShotType => ModContent.ProjectileType<BiwaNote>();
+		protected override int Life => 95000;
+		protected override int Damage => 118;
+		protected override int Defense => 58;
+		protected override int Width => 36;
+		protected override int Height => 60;
+		protected override int MinionType => ModContent.NPCType<BiwaDemon>();
+		protected override float BombTint => 2f;
+		protected override float ShotSpeed => 11f;
+		protected override bool Enrage => true;
+		protected override int HitDust => DustID.PurpleTorch;
+		protected override int MusicTrack => MusicID.Boss4;
+		protected override int ValueGold => 32;
+		protected override int BloodMin => 30;
+		protected override int BloodMax => 50;
+		protected override int Scrolls => 2;
 	}
 }

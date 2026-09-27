@@ -20,6 +20,7 @@ namespace DemonSlayerMod.Common.Breathing
 	{
 		public const int None = -1;
 		public const int Sound = 10;
+		public const int Sun = 13;
 		public const float AffinityBonus = 0.2f;
 
 		public static readonly BreathingStyle[] All = {

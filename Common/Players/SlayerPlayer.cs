@@ -49,6 +49,14 @@ namespace DemonSlayerMod.Common.Players
 		public int TechniqueCooldownMax = 1;
 		public int MarkCooldown;
 		public SwordStats HeldBlade;     // bonuses of the Nichirin Blade in hand, or null
+
+		// Set by accessories and buffs each tick (see Content/Items/Gear.cs).
+		public int BonusMaxBreath;
+		public float BonusBreathRegen;       // fraction
+		public float BonusTechniqueDamage;   // fraction
+		public float BonusSunTechniqueDamage; // fraction, Sun Breathing only
+		public float DemonDamageTaken = 1f;  // multiplier on damage from demons
+		public bool WisteriaPoison;          // blade and technique hits inflict Venom, +10% damage to demons
 		private int lifeStealTimer;
 		private HashSet<string> downedWhenEntered;
 		private bool hintShown;
@@ -186,6 +194,12 @@ namespace DemonSlayerMod.Common.Players
 
 		public override void ResetEffects() {
 			HeldBlade = null;
+			BonusMaxBreath = 0;
+			BonusBreathRegen = 0f;
+			BonusTechniqueDamage = 0f;
+			BonusSunTechniqueDamage = 0f;
+			DemonDamageTaken = 1f;
+			WisteriaPoison = false;
 		}
 
 		public override void ModifyMaxStats(out StatModifier health, out StatModifier mana) {
@@ -201,8 +215,8 @@ namespace DemonSlayerMod.Common.Players
 			Player.statDefense += Stat(SlayerStat.Endurance) / 2 + (Rank >= SlayerRanks.Hashira ? 10 : 0);
 			Player.GetCritChance(DamageClass.Melee) += Stat(SlayerStat.Focus) * 0.5f;
 
-			BreathMax = BaseBreath + Stat(SlayerStat.Breath) * 4;
-			float regen = 1f + Stat(SlayerStat.Breath) * 0.02f;
+			BreathMax = BaseBreath + Stat(SlayerStat.Breath) * 4 + BonusMaxBreath;
+			float regen = 1f + Stat(SlayerStat.Breath) * 0.02f + BonusBreathRegen;
 			if (Rank >= SlayerRanks.TotalConcentrationRank) {
 				regen += 0.5f; // Total Concentration Breathing: Constant
 			}
@@ -222,7 +236,10 @@ namespace DemonSlayerMod.Common.Players
 
 		// Multiplier for breathing technique damage on top of the blade's damage.
 		public float TechniqueMultiplier() {
-			float mult = 1f + Stat(SlayerStat.Focus) * 0.01f;
+			float mult = 1f + Stat(SlayerStat.Focus) * 0.01f + BonusTechniqueDamage;
+			if (Style == BreathingStyles.Sun) {
+				mult += BonusSunTechniqueDamage;
+			}
 			if (HeldBlade != null) {
 				mult += HeldBlade.TechniqueDamage;
 			}
@@ -244,7 +261,7 @@ namespace DemonSlayerMod.Common.Players
 			}
 			float bonus = 0f;
 			if (DemonTraits.IsDemon(target)) {
-				bonus += HeldBlade.DemonDamage;
+				bonus += HeldBlade.DemonDamage + (WisteriaPoison ? 0.1f : 0f);
 			}
 			bonus += Main.dayTime ? HeldBlade.DayDamage : HeldBlade.NightDamage;
 			modifiers.FinalDamage *= 1f + bonus;
@@ -278,9 +295,25 @@ namespace DemonSlayerMod.Common.Players
 			if (HeldBlade.Debuff >= 0) {
 				target.AddBuff(HeldBlade.Debuff, 240);
 			}
+			if (WisteriaPoison) {
+				target.AddBuff(BuffID.Venom, 240);
+			}
 			if (HeldBlade.LifeSteal > 0 && lifeStealTimer <= 0 && !target.immortal) {
 				Player.Heal(HeldBlade.LifeSteal);
 				lifeStealTimer = 30;
+			}
+		}
+
+		// Wisteria Charm: demons and their attacks hurt less.
+		public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers) {
+			if (DemonTraits.IsDemon(npc)) {
+				modifiers.FinalDamage *= DemonDamageTaken;
+			}
+		}
+
+		public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers) {
+			if (proj.ModProjectile is Content.Projectiles.Demon.DemonShot or Content.Projectiles.Demon.DemonBomb or Content.Projectiles.Demon.DemonSpike) {
+				modifiers.FinalDamage *= DemonDamageTaken;
 			}
 		}
 

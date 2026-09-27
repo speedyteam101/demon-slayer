@@ -261,6 +261,39 @@ namespace DemonSlayerMod.Content.Projectiles.Demon
 		protected override int DebuffType => BuffID.Electrified;
 	}
 
+	public class HellfireShot : DemonShot
+	{
+		protected override string Shape => "Orb";
+		protected override Color Color => new(255, 120, 30);
+		protected override int DustType => DustID.Torch;
+		protected override int DebuffType => BuffID.OnFire;
+	}
+
+	public class PrismShot : DemonShot
+	{
+		protected override string Shape => "Needle";
+		protected override Color Color => new(255, 170, 240);
+		protected override int DustType => DustID.PinkFairy;
+		protected override int DebuffType => BuffID.Confused;
+		protected override int DebuffTime => 60;
+	}
+
+	public class SandShot : DemonShot
+	{
+		protected override string Shape => "Orb";
+		protected override Color Color => new(225, 200, 130);
+		protected override int DustType => DustID.Sand;
+		protected override int DebuffType => BuffID.Darkness;
+	}
+
+	public class BiwaNote : DemonShot
+	{
+		protected override string Shape => "Ring";
+		protected override Color Color => new(200, 120, 255);
+		protected override int DustType => DustID.PurpleTorch;
+		protected override float DrawScale => 0.5f;
+	}
+
 	// A warning circle that explodes after a moment. ai[1]: radius. Harmless until it goes off.
 	public class DemonBomb : ModProjectile
 	{

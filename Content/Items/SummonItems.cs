@@ -162,4 +162,48 @@ namespace DemonSlayerMod.Content.Items
 			CreateRecipe().AddIngredient<DemonBlood>(50).AddIngredient(ItemID.LunarBar, 10).AddTile(TileID.LunarCraftingStation).Register();
 		}
 	}
+
+	public class WoodenCharm : DemonSummonItem
+	{
+		protected override int BossType => ModContent.NPCType<Mukago>();
+		protected override bool Unlocked => NPC.downedBoss1;
+		protected override int Rarity => ItemRarityID.Blue;
+
+		public override void AddRecipes() {
+			CreateRecipe().AddIngredient<DemonBlood>(8).AddIngredient(ItemID.Lens, 2).AddTile(TileID.Anvils).Register();
+		}
+	}
+
+	public class TsuzumiDrum : DemonSummonItem
+	{
+		protected override int BossType => ModContent.NPCType<Kyogai>();
+		protected override bool Unlocked => NPC.downedBoss2;
+		protected override int Rarity => ItemRarityID.Green;
+
+		public override void AddRecipes() {
+			CreateRecipe().AddIngredient<DemonBlood>(12).AddIngredient(ItemID.Leather, 5).AddTile(TileID.Anvils).Register();
+		}
+	}
+
+	public class CrackedMagatama : DemonSummonItem
+	{
+		protected override int BossType => ModContent.NPCType<Kaigaku>();
+		protected override bool Unlocked => NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3;
+		protected override int Rarity => ItemRarityID.LightPurple;
+
+		public override void AddRecipes() {
+			CreateRecipe().AddIngredient<DemonBlood>(25).AddIngredient(ItemID.SoulofLight, 8).AddIngredient(ItemID.SoulofNight, 8).AddTile(TileID.MythrilAnvil).Register();
+		}
+	}
+
+	public class BiwaString : DemonSummonItem
+	{
+		protected override int BossType => ModContent.NPCType<Nakime>();
+		protected override bool Unlocked => NPC.downedGolemBoss;
+		protected override int Rarity => ItemRarityID.Yellow;
+
+		public override void AddRecipes() {
+			CreateRecipe().AddIngredient<DemonBlood>(30).AddIngredient(ItemID.Silk, 10).AddIngredient(ItemID.BeetleHusk, 5).AddTile(TileID.MythrilAnvil).Register();
+		}
+	}
 }

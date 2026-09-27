@@ -43,6 +43,7 @@ namespace DemonSlayerMod.Content.NPCs.Enemies
 		protected virtual bool ShotGravity => false;
 		protected virtual int BloodMin => 1;
 		protected virtual int BloodMax => 2;
+		protected virtual bool LavaImmune => false;
 
 		private ref float ShotTimer => ref NPC.localAI[0];
 		private ref float MoveTimer => ref NPC.localAI[1];
@@ -61,6 +62,7 @@ namespace DemonSlayerMod.Content.NPCs.Enemies
 			NPC.DeathSound = SoundID.NPCDeath2;
 			NPC.value = Life * 3f;
 			NPC.knockBackResist = KnockbackResist;
+			NPC.lavaImmune = LavaImmune;
 
 			if (Kind == DemonKind.Walker || Kind == DemonKind.Leaper) {
 				NPC.aiStyle = NPCAIStyleID.Fighter;

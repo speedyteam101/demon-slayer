@@ -50,4 +50,16 @@ namespace DemonSlayerMod.Content.Buffs
 			}
 		}
 	}
+
+	// Wisteria poison on your blade: hits inflict Venom and deal +10% damage to demons.
+	public class WisteriaPoisonBuff : ModBuff
+	{
+		public override void SetStaticDefaults() {
+			Main.meleeBuff[Type] = true;
+		}
+
+		public override void Update(Player player, ref int buffIndex) {
+			Common.Players.SlayerPlayer.Get(player).WisteriaPoison = true;
+		}
+	}
 }

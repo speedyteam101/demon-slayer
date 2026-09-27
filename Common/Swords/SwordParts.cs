@@ -97,6 +97,9 @@ namespace DemonSlayerMod.Common.Swords
 			new() { Name = "Serpent Blade", Texture = "Serpent", Description = "A winding blade that slips past guards", DamageMult = 1f, UseTime = 18, Scale = 1.15f, Crit = 10, Knockback = 4.5f, ArmorPen = 8 },
 			new() { Name = "Jagged Blade", Texture = "Jagged", Description = "A chipped, serrated blade that tears flesh", DamageMult = 1.1f, UseTime = 20, Scale = 1.1f, Crit = 6, Knockback = 6f, ArmorPen = 10 },
 			new() { Name = "Greatblade", Texture = "Greatblade", Description = "A massive slab of steel: the slowest and strongest", DamageMult = 1.55f, UseTime = 36, Scale = 1.35f, Crit = 0, Knockback = 11f, ArmorPen = 10 },
+			new() { Name = "Tachi", Texture = "Tachi", Description = "A deeply curved cavalry sword: long, quick draws", DamageMult = 1.1f, UseTime = 22, Scale = 1.3f, Crit = 6, Knockback = 5.5f },
+			new() { Name = "Crescent Blade", Texture = "Crescent", Description = "A moon-curved blade that finds gaps in armor", DamageMult = 1.05f, UseTime = 18, Scale = 1.2f, Crit = 8, Knockback = 5f, ArmorPen = 4 },
+			new() { Name = "Chisel Blade", Texture = "Chisel", Description = "A thick, squared-off blade that smashes through armor", DamageMult = 1.25f, UseTime = 24, Scale = 1.05f, Crit = 2, Knockback = 8f, ArmorPen = 12 },
 		};
 
 		// Damage is the blade's base damage before its shape and your bonuses.
@@ -129,6 +132,12 @@ namespace DemonSlayerMod.Common.Swords
 			new() { Name = "Orange", Color = new Color(245, 140, 40), Description = "Inflicts Ichor (lower defense)", Bonus = new(BonusKind.Debuff, 0, BuffID.Ichor) },
 			new() { Name = "Gold", Color = new Color(235, 195, 60), Description = "Inflicts Midas (more coins)", Bonus = new(BonusKind.Debuff, 0, BuffID.Midas) },
 			new() { Name = "Crimson", Color = new Color(155, 20, 45), Description = "+5% melee damage", Bonus = new(BonusKind.Damage, 5) },
+			new() { Name = "Teal", Color = new Color(40, 170, 170), Description = "+8% technique damage", Bonus = new(BonusKind.TechniqueDamage, 8) },
+			new() { Name = "Silver", Color = new Color(200, 205, 215), Description = "+6 armor penetration", Bonus = new(BonusKind.ArmorPen, 6) },
+			new() { Name = "Rose", Color = new Color(230, 90, 120), Description = "Inflicts Poison", Bonus = new(BonusKind.Debuff, 0, BuffID.Poisoned) },
+			new() { Name = "Amber", Color = new Color(240, 170, 40), Description = "+12% damage during the day", Bonus = new(BonusKind.DayDamage, 12) },
+			new() { Name = "Jade", Color = new Color(80, 190, 130), Description = "+20% Breath regeneration", Bonus = new(BonusKind.BreathRegen, 20) },
+			new() { Name = "Obsidian", Color = new Color(30, 25, 45), Description = "+12% damage at night", Bonus = new(BonusKind.NightDamage, 12) },
 		};
 
 		public static readonly Guard[] Guards = {
@@ -143,6 +152,10 @@ namespace DemonSlayerMod.Common.Swords
 			new() { Name = "Serpent Tsuba", Texture = "Serpent", Description = "+6 armor penetration", Bonus = new(BonusKind.ArmorPen, 6) },
 			new() { Name = "Crescent Tsuba", Texture = "Crescent", Description = "+15 max Breath", Bonus = new(BonusKind.MaxBreath, 15) },
 			new() { Name = "No Guard", Texture = "None", Description = "+10% melee speed, -2 defense", Bonus = new(BonusKind.MeleeSpeed, 10), Drawback = new(BonusKind.Defense, -2) },
+			new() { Name = "Star Tsuba", Texture = "Star", Description = "+7% crit", Bonus = new(BonusKind.Crit, 7) },
+			new() { Name = "Sun Tsuba", Texture = "Sun", Description = "+10% technique damage, -5% melee speed", Bonus = new(BonusKind.TechniqueDamage, 10), Drawback = new(BonusKind.MeleeSpeed, -5) },
+			new() { Name = "Cross Tsuba", Texture = "Cross", Description = "+3 defense, +3% crit", Bonus = new(BonusKind.Defense, 3), Drawback = new(BonusKind.Crit, 3) },
+			new() { Name = "Wave Tsuba", Texture = "Wave", Description = "+30% Breath regeneration, -2 defense", Bonus = new(BonusKind.BreathRegen, 30), Drawback = new(BonusKind.Defense, -2) },
 		};
 
 		public static readonly Tint[] GuardFinishes = {
@@ -154,6 +167,10 @@ namespace DemonSlayerMod.Common.Swords
 			new() { Name = "Crimson Lacquer", Color = new Color(170, 30, 40) },
 			new() { Name = "Jade", Color = new Color(80, 180, 130) },
 			new() { Name = "Violet Lacquer", Color = new Color(120, 70, 170) },
+			new() { Name = "Pearl", Color = new Color(240, 235, 225) },
+			new() { Name = "Obsidian", Color = new Color(30, 25, 40) },
+			new() { Name = "Rose Gold", Color = new Color(230, 160, 140) },
+			new() { Name = "Sky Blue", Color = new Color(110, 170, 240) },
 		};
 
 		public static readonly Tint[] Wraps = {
@@ -169,6 +186,10 @@ namespace DemonSlayerMod.Common.Swords
 			new() { Name = "Brown", Color = new Color(110, 70, 40) },
 			new() { Name = "Teal", Color = new Color(40, 150, 150) },
 			new() { Name = "Orange", Color = new Color(230, 130, 40) },
+			new() { Name = "Maroon", Color = new Color(110, 25, 35) },
+			new() { Name = "Lavender", Color = new Color(180, 150, 220) },
+			new() { Name = "Mint", Color = new Color(150, 225, 190) },
+			new() { Name = "Sky", Color = new Color(130, 190, 240) },
 		};
 
 		public static readonly Engraving[] Engravings = {
@@ -182,6 +203,11 @@ namespace DemonSlayerMod.Common.Swords
 			new() { Name = "Sunrise", Description = "+12% damage during the day", Bonus = new(BonusKind.DayDamage, 12) },
 			new() { Name = "Moonlit", Description = "+12% damage at night", Bonus = new(BonusKind.NightDamage, 12) },
 			new() { Name = "Unbroken", Description = "+10% technique damage", Bonus = new(BonusKind.TechniqueDamage, 10) },
+			new() { Name = "Hashira's Oath", Description = "+6% melee damage", Bonus = new(BonusKind.Damage, 6) },
+			new() { Name = "Butterfly Poison", Description = "Inflicts Venom", Bonus = new(BonusKind.Debuff, 0, BuffID.Venom) },
+			new() { Name = "Flowing Water", Description = "+8% movement speed", Bonus = new(BonusKind.MoveSpeed, 8) },
+			new() { Name = "Iron Will", Description = "+5 defense", Bonus = new(BonusKind.Defense, 5) },
+			new() { Name = "Piercing Resolve", Description = "+10 armor penetration", Bonus = new(BonusKind.ArmorPen, 10) },
 		};
 
 		public static readonly Trail[] Trails = {
@@ -195,6 +221,10 @@ namespace DemonSlayerMod.Common.Swords
 			new() { Name = "Shadow", Dust = DustID.Shadowflame },
 			new() { Name = "Frost", Dust = DustID.IceTorch },
 			new() { Name = "Rainbow", Dust = DustID.WhiteTorch, Rainbow = true },
+			new() { Name = "Sparks", Dust = DustID.GoldFlame },
+			new() { Name = "Blood", Dust = DustID.Blood },
+			new() { Name = "Cursed Flame", Dust = DustID.CursedTorch },
+			new() { Name = "Moonlight", Dust = DustID.PurpleTorch },
 		};
 	}
 }
